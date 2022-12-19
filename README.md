@@ -7,3 +7,7 @@ Quiz-App is an application that allows users to test their JavaScript knowledge.
 ## Screenshot
 
 <img src = "quizApp.png">
+
+## Challenges 
+
+Works locally but does not on Github Pages.
