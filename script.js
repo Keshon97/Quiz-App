@@ -62,9 +62,36 @@ startQuiz = (quizIndex) => {
     userOptions.forEach((newItem) => {
         var questionList = document.createElement('li');
         questionList.textContent = newItem;
-        quizContainer.appendChild(ulCreate);
+        quizContainer.appendChild(list);
         list.appendChild(questionList);
         questionList.addEventListener('click', (getAnswer));
     })
 };
 
+getAnswer = (e) => {
+    var element = e.target;
+
+    if (element.matches('li')) {
+
+        var responseDiv = document.createElement('div');
+        responseDiv.setAttribute('id', 'responseDiv');
+        // if answer is correct
+        if (element.textContent == quizQuestions[quizIndex].answer) {
+            score++;
+            responseDiv.textContent = 'Correct!';
+        } else {
+            // subtracts 10 seconds for every wrong answer
+            timerCount = timerCount - penaltyTime;
+            responseDiv.textContent = 'Wrong!';
+        }
+    }
+    // quiz index is the current question the user is on
+    quizIndex++;
+
+    if (quizIndex >= quizQuestions.length) {
+        responseDiv.textContent = 'Quiz Over!' + ' ' + 'You got  ' + score + '/' + quizQuestions.length + ' Correct!';
+    } else {
+        startQuiz(quizIndex);
+    }
+    quizContainer.appendChild(responseDiv);
+};
