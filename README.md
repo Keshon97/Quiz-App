@@ -11,3 +11,7 @@ Quiz-App is an application that allows users to test their JavaScript knowledge.
 ## Challenges 
 
 Works locally but does not on Github Pages.
+
+## Link
+
+[Link to deployed application](https://keshon97.github.io/Quiz-App/)
