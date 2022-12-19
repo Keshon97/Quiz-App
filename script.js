@@ -28,3 +28,43 @@ const quizQuestions = [
 ];
 console.log(quizQuestions);
 
+var score = 0
+var quizIndex = 0
+var timerCount = 40
+var interval = 0
+var penaltyTime = 10
+var list = document.createElement('ul');
+
+//button function that begins quiz
+startButton.addEventListener('click', () => {
+    if (interval === 0) {
+        interval = setInterval(() => {
+            timerCount--;
+            timer.textContent = 'Time Left: ' + timerCount;
+
+            if (timerCount <= 0) {
+                clearInterval(interval);
+                timer.textContent = 'You ran out of time';
+            }
+        }, 1000);
+    }
+    startQuiz(quizIndex);
+});
+
+startQuiz = (quizIndex) => {
+    quizContainer.innerHTML = '';
+    list.innerHTML = '';
+    for (var i = 0; i < quizQuestions.length; i++); {
+        var displayQuestion = quizQuestions[quizIndex].question;
+        var userOptions = quizQuestions[quizIndex].options;
+        quizContainer.textContent = displayQuestion;
+    }
+    userOptions.forEach((newItem) => {
+        var questionList = document.createElement('li');
+        questionList.textContent = newItem;
+        quizContainer.appendChild(ulCreate);
+        list.appendChild(questionList);
+        questionList.addEventListener('click', (getAnswer));
+    })
+};
+
